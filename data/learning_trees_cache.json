@@ -1,0 +1,218 @@
+{
+  "docker": {
+    "root_node_id": "docker-mastery",
+    "nodes": [
+      {
+        "id": "docker-mastery",
+        "label": "Docker Mastery",
+        "description": "Master containerization with Docker completely",
+        "level": 0,
+        "parent_id": null,
+        "resources": [
+          {
+            "title": "Docker Deep Dive Book",
+            "url": "https://www.amazon.com/Docker-Deep-Dive-Nigel-Poulton/dp/1521822808",
+            "type": "book",
+            "is_free": false
+          },
+          {
+            "title": "Docker Official Documentation",
+            "url": "https://docs.docker.com/",
+            "type": "docs",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-orchestration",
+        "label": "Docker Orchestration",
+        "description": "Manage containers at scale with orchestration",
+        "level": 1,
+        "parent_id": "docker-mastery",
+        "resources": [
+          {
+            "title": "Docker Swarm Official Docs",
+            "url": "https://docs.docker.com/engine/swarm/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Docker Swarm Tutorial",
+            "url": "https://www.youtube.com/watch?v=x843GyFRIIY",
+            "type": "video",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-networking",
+        "label": "Docker Networking",
+        "description": "Connect containers using Docker networks",
+        "level": 1,
+        "parent_id": "docker-mastery",
+        "resources": [
+          {
+            "title": "Docker Networking Overview",
+            "url": "https://docs.docker.com/network/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Docker Networking Tutorial",
+            "url": "https://www.youtube.com/watch?v=bKFMS5C4CG0",
+            "type": "video",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-compose",
+        "label": "Docker Compose",
+        "description": "Define multi-container apps with Compose",
+        "level": 2,
+        "parent_id": "docker-orchestration",
+        "resources": [
+          {
+            "title": "Docker Compose Official Docs",
+            "url": "https://docs.docker.com/compose/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Docker Compose Tutorial freeCodeCamp",
+            "url": "https://www.freecodecamp.org/news/what-is-docker-compose-how-to-use-it/",
+            "type": "article",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-volumes",
+        "label": "Docker Volumes Storage",
+        "description": "Persist data using Docker volumes",
+        "level": 2,
+        "parent_id": "docker-networking",
+        "resources": [
+          {
+            "title": "Manage Data in Docker",
+            "url": "https://docs.docker.com/storage/volumes/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Docker Volumes Explained",
+            "url": "https://www.youtube.com/watch?v=p2PH_YPCsis",
+            "type": "video",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-images",
+        "label": "Docker Images",
+        "description": "Build and manage Docker container images",
+        "level": 2,
+        "parent_id": "docker-mastery",
+        "resources": [
+          {
+            "title": "Docker Images Official Docs",
+            "url": "https://docs.docker.com/engine/reference/commandline/images/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Docker Image Tutorial",
+            "url": "https://www.youtube.com/watch?v=YFl2mCHdv24",
+            "type": "video",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-dockerfile",
+        "label": "Writing Dockerfiles",
+        "description": "Create Dockerfiles to build images",
+        "level": 3,
+        "parent_id": "docker-images",
+        "resources": [
+          {
+            "title": "Dockerfile Reference Docs",
+            "url": "https://docs.docker.com/engine/reference/builder/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Dockerfile Tutorial freeCodeCamp",
+            "url": "https://www.freecodecamp.org/news/dockerfile-best-practices/",
+            "type": "article",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-containers",
+        "label": "Running Containers",
+        "description": "Run and manage basic Docker containers",
+        "level": 3,
+        "parent_id": "docker-images",
+        "resources": [
+          {
+            "title": "Docker Run Reference",
+            "url": "https://docs.docker.com/engine/reference/commandline/run/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Docker Containers Beginner Guide",
+            "url": "https://www.youtube.com/watch?v=3c-iBn73dDE",
+            "type": "video",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-install",
+        "label": "Installing Docker",
+        "description": "Install Docker on your local machine",
+        "level": 3,
+        "parent_id": "docker-mastery",
+        "resources": [
+          {
+            "title": "Docker Installation Guide",
+            "url": "https://docs.docker.com/get-docker/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Install Docker Tutorial",
+            "url": "https://www.youtube.com/watch?v=_dfLOzuIg2o",
+            "type": "video",
+            "is_free": true
+          }
+        ]
+      },
+      {
+        "id": "docker-registry",
+        "label": "Docker Registry Hub",
+        "description": "Push and pull images from registries",
+        "level": 2,
+        "parent_id": "docker-images",
+        "resources": [
+          {
+            "title": "Docker Hub Official Docs",
+            "url": "https://docs.docker.com/docker-hub/",
+            "type": "docs",
+            "is_free": true
+          },
+          {
+            "title": "Docker Hub Getting Started",
+            "url": "https://www.youtube.com/watch?v=iqqDU2crIEQ",
+            "type": "video",
+            "is_free": true
+          }
+        ]
+      }
+    ],
+    "generated_at": "2026-01-01T00:00:00"
+  }
+}

@@ -28,56 +28,70 @@ def _extract_json(text: str) -> dict | list:
 # (a) Graph Generation
 # ---------------------------------------------------------------------------
 
-GRAPH_GENERATION_PROMPT = """Generate a comprehensive CS technology ocean graph for a self-learning website.
+def _layer_prompt(layer: str, layer_desc: str) -> str:
+    return f"""Generate nodes for the "{layer}" layer of a CS tech learning graph.
 
-Requirements:
-- Include exactly 100 nodes covering: web frontend, web backend, databases, networking,
-  OS fundamentals, cloud/devops, AI/ML, mobile, systems programming, security
-- Assign each node one of these layers: "surface" | "mid" | "deep_mid" | "deep"
-  - "surface": core web frontend (HTML, CSS, JavaScript, TypeScript, React, Vue, Angular, etc.)
-  - "mid": backend frameworks, APIs, protocols (Node.js, FastAPI, Django, REST, GraphQL, gRPC, etc.)
-  - "deep_mid": databases, networking, OS, data structures, algorithms, security fundamentals
-  - "deep": infra, DevOps, AI/ML, systems programming (Docker, Kubernetes, Terraform, PyTorch, Rust, Go, etc.)
-- For each node include:
-  - id: lowercase slug (e.g. "react", "postgresql", "kubernetes")
-  - label: proper display name (e.g. "React", "PostgreSQL", "Kubernetes")
-  - layer: one of surface/mid/deep_mid/deep
-  - description: 1 sentence explaining what this technology is
-  - related_ids: list of 3-8 IDs of other nodes in this graph that are closely related
-  - aliases: list of common alternative names/spellings (may be empty)
-- Include an edges array as [{source, target, weight}] pairs
-  - weight 1.0 = normal relation, 1.5 = very closely related, 0.7 = loosely related
-  - Each node should appear in at least 2 edges
-- Ensure the graph is well-connected (no isolated nodes)
-- version: "1.0.0"
+Layer: {layer_desc}
 
-Respond with ONLY valid JSON — no explanation, no markdown fences:
-{
-  "version": "1.0.0",
-  "nodes": [...],
-  "edges": [...],
-  "generated_at": "<ISO timestamp>"
-}"""
+Output exactly 18 nodes. Each node:
+- id: slug (e.g. "react")
+- label: display name
+- layer: "{layer}"
+- description: max 8 words
+- related_ids: 2-4 ids of OTHER nodes in THIS response only
+- aliases: 0-1 items max
+
+Also output edges array: [{{"source":"a","target":"b","weight":1.0}}] — only between nodes in THIS response, max 25 edges.
+
+Respond with ONLY valid JSON, no markdown:
+{{"nodes":[...],"edges":[...]}}"""
 
 
 def generate_initial_graph() -> OceanGraph:
-    message = client.messages.create(
-        model=MODEL,
-        max_tokens=8192,
-        messages=[{"role": "user", "content": GRAPH_GENERATION_PROMPT}],
-    )
-    raw = message.content[0].text
-    data = _extract_json(raw)
+    layers = [
+        ("surface",   "Core web frontend: HTML, CSS, JavaScript, TypeScript, React, Vue, Angular, Svelte, WebAssembly, browser APIs, web animations, accessibility"),
+        ("mid",       "Backend frameworks and protocols: Node.js, FastAPI, Django, Express, gRPC, REST, GraphQL, WebSockets, OAuth, JWT, message queues (Redis, RabbitMQ, Kafka)"),
+        ("deep_mid",  "Databases, networking, OS, algorithms: PostgreSQL, MySQL, MongoDB, Redis, TCP/IP, DNS, HTTP, Linux, data structures, algorithms, computer architecture, security fundamentals, cryptography"),
+        ("deep",      "Infra, DevOps, AI/ML, systems: Docker, Kubernetes, Terraform, AWS, GCP, CI/CD, Git, Nginx, PyTorch, TensorFlow, LLMs, Rust, Go, C++, compilers, distributed systems, observability"),
+    ]
 
-    # Validate: ensure all related_ids reference real node IDs
-    node_ids = {n["id"] for n in data["nodes"]}
-    for node in data["nodes"]:
+    all_nodes: list[dict] = []
+    all_edges: list[dict] = []
+
+    for layer_id, layer_desc in layers:
+        prompt = _layer_prompt(layer_id, layer_desc)
+        message = client.messages.create(
+            model=MODEL,
+            max_tokens=4096,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = message.content[0].text
+        data = _extract_json(raw)
+        all_nodes.extend(data.get("nodes", []))
+        all_edges.extend(data.get("edges", []))
+        print(f"  Layer '{layer_id}': {len(data.get('nodes', []))} nodes, {len(data.get('edges', []))} edges")
+
+    # Validate related_ids
+    node_ids = {n["id"] for n in all_nodes}
+    for node in all_nodes:
         node["related_ids"] = [r for r in node.get("related_ids", []) if r in node_ids]
+    # Validate edges
+    all_edges = [e for e in all_edges if e["source"] in node_ids and e["target"] in node_ids]
+    # Deduplicate edges
+    seen_edges: set[tuple] = set()
+    deduped_edges = []
+    for e in all_edges:
+        key = (min(e["source"], e["target"]), max(e["source"], e["target"]))
+        if key not in seen_edges:
+            seen_edges.add(key)
+            deduped_edges.append(e)
 
-    if "generated_at" not in data or not data["generated_at"]:
-        data["generated_at"] = datetime.utcnow().isoformat()
-
-    return OceanGraph.model_validate(data)
+    return OceanGraph.model_validate({
+        "version": "1.0.0",
+        "nodes": all_nodes,
+        "edges": deduped_edges,
+        "generated_at": datetime.utcnow().isoformat(),
+    })
 
 
 # ---------------------------------------------------------------------------
@@ -85,41 +99,22 @@ def generate_initial_graph() -> OceanGraph:
 # ---------------------------------------------------------------------------
 
 def _learning_tree_prompt(node_id: str, node_label: str) -> str:
-    return f"""Generate a structured learning tree for the technology: "{node_label}" (id: "{node_id}").
+    return f"""Learning tree for "{node_label}" (id: "{node_id}").
 
-Requirements:
-- The tree has one root node representing mastery of {node_label} (level=0)
-- Leaf nodes represent the most basic prerequisites a complete beginner needs (level=3 or 4)
-- Include 12-20 nodes total, organized into 3-5 levels:
-  - Level 0: mastery (root node, id = "{node_id}-mastery")
-  - Level 1: advanced topics
-  - Level 2: intermediate topics
-  - Level 3: beginner foundations
-  - Level 4: absolute prerequisites (optional, for complex topics)
-- Each node:
-  - id: unique slug (e.g. "{node_id}-basics", "{node_id}-advanced-patterns")
-  - label: short display name
-  - description: 1-2 sentences on what you learn at this stage
-  - level: integer 0-4
-  - parent_id: id of parent node (null for root)
-  - resources: 3-5 learning resources
-    - title: resource name
-    - url: actual URL (prefer MDN, freeCodeCamp, official docs, YouTube, roadmap.sh)
-    - type: "video" | "article" | "docs" | "course" | "book"
-    - is_free: boolean
+Output exactly 10 nodes. Levels: 0=mastery, 1=advanced, 2=intermediate, 3=beginner.
+Each node: id, label (max 4 words), description (max 8 words), level, parent_id (null for root), resources (exactly 2 items).
+Resource: title (max 6 words), url (real working URL from MDN/freeCodeCamp/official docs/YouTube), type (video|article|docs|course|book), is_free (bool).
 
-Respond with ONLY valid JSON:
-{{
-  "root_node_id": "{node_id}-mastery",
-  "nodes": [...],
-  "generated_at": "<ISO timestamp>"
-}}"""
+root id must be "{node_id}-mastery".
+
+Respond with ONLY valid compact JSON:
+{{"root_node_id":"{node_id}-mastery","nodes":[...],"generated_at":"2026-01-01T00:00:00"}}"""
 
 
 def generate_learning_tree(node_id: str, node_label: str) -> LearningTree:
     message = client.messages.create(
         model=MODEL,
-        max_tokens=4096,
+        max_tokens=8192,
         messages=[{"role": "user", "content": _learning_tree_prompt(node_id, node_label)}],
     )
     raw = message.content[0].text
@@ -175,27 +170,15 @@ def detect_tech_stack(repo_url: str, files: dict[str, str], known_node_ids: list
 # ---------------------------------------------------------------------------
 
 def _proposal_prompt(unmatched: list[str], existing_node_ids: list[str]) -> str:
-    existing_str = ", ".join(existing_node_ids[:150])
-    unmatched_str = ", ".join(unmatched)
-    return f"""The following technologies were detected in a repo scan but are NOT yet in our CS learning graph:
-{unmatched_str}
+    # Keep prompt small: cap inputs
+    unmatched_str = ", ".join(unmatched[:10])
+    existing_str = ", ".join(existing_node_ids[:50])
+    return f"""Classify these unrecognized CS technologies: {unmatched_str}
 
-For each technology, determine:
-1. scope: "major" (widely-used technology worth a top-level graph node) or "niche" (specific library/tool better as a subtopic)
-2. layer: "surface" | "mid" | "deep_mid" | "deep"
-3. If scope="major": propose a new graph node
-4. If scope="niche": identify the closest existing parent node from this list: [{existing_str}]
+For each, output: id (slug), label, layer (surface|mid|deep_mid|deep), description (max 8 words), suggested_parent_id (closest from: {existing_str}), scope (major|niche).
 
-For each proposal:
-- id: lowercase slug
-- label: proper display name
-- layer: one of surface/mid/deep_mid/deep
-- description: 1 sentence
-- suggested_parent_id: closest existing node id (required for niche, optional for major)
-- scope: "major" or "niche"
-
-Respond with ONLY valid JSON:
-{{"proposals": [{{"id": "...", "label": "...", "layer": "...", "description": "...", "suggested_parent_id": "...", "scope": "..."}}]}}"""
+Respond ONLY with compact JSON:
+{{"proposals":[{{"id":"x","label":"X","layer":"mid","description":"x","suggested_parent_id":"y","scope":"niche"}}]}}"""
 
 
 def propose_new_nodes(unmatched_names: list[str], existing_node_ids: list[str]) -> list[NodeProposal]:
@@ -203,7 +186,7 @@ def propose_new_nodes(unmatched_names: list[str], existing_node_ids: list[str]) 
         return []
     message = client.messages.create(
         model=MODEL,
-        max_tokens=2048,
+        max_tokens=4096,
         messages=[{"role": "user", "content": _proposal_prompt(unmatched_names, existing_node_ids)}],
     )
     raw = message.content[0].text

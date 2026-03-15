@@ -2,7 +2,8 @@ import os
 import re
 import httpx
 
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+_raw_token = os.getenv("GITHUB_TOKEN", "").split("#")[0].strip()
+GITHUB_TOKEN = _raw_token if _raw_token and not _raw_token.startswith("ghp_...") else None
 
 # Files to fetch from a repo for tech detection
 TARGET_FILES = [
@@ -31,7 +32,7 @@ def parse_github_url(url: str) -> tuple[str, str]:
     match = re.search(r"github\.com/([^/]+)/([^/\s?#]+)", url)
     if not match:
         raise ValueError(f"Invalid GitHub URL: {url}")
-    owner, repo = match.group(1), match.group(2).rstrip(".git")
+    owner, repo = match.group(1), match.group(2).removesuffix(".git")
     return owner, repo
 
 

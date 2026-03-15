@@ -1,0 +1,1514 @@
+{
+  "version": "1.0.1",
+  "nodes": [
+    {
+      "id": "html",
+      "label": "HTML",
+      "layer": "surface",
+      "description": "Markup language structuring web page content",
+      "related_ids": [
+        "css",
+        "accessibility",
+        "browser-apis"
+      ],
+      "aliases": [
+        "HTML5"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "css",
+      "label": "CSS",
+      "layer": "surface",
+      "description": "Stylesheet language controlling visual presentation",
+      "related_ids": [
+        "html",
+        "web-animations",
+        "accessibility"
+      ],
+      "aliases": [
+        "CSS3"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "javascript",
+      "label": "JavaScript",
+      "layer": "surface",
+      "description": "Dynamic scripting language for web interactivity",
+      "related_ids": [
+        "typescript",
+        "browser-apis",
+        "webassembly"
+      ],
+      "aliases": [
+        "JS"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "typescript",
+      "label": "TypeScript",
+      "layer": "surface",
+      "description": "Typed superset of JavaScript for safer code",
+      "related_ids": [
+        "javascript",
+        "react",
+        "angular"
+      ],
+      "aliases": [
+        "TS"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "react",
+      "label": "React",
+      "layer": "surface",
+      "description": "Component-based UI library by Facebook",
+      "related_ids": [
+        "typescript",
+        "vue",
+        "javascript"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "vue",
+      "label": "Vue",
+      "layer": "surface",
+      "description": "Progressive JavaScript framework for building UIs",
+      "related_ids": [
+        "react",
+        "svelte",
+        "javascript"
+      ],
+      "aliases": [
+        "Vue.js"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "angular",
+      "label": "Angular",
+      "layer": "surface",
+      "description": "Full-featured TypeScript-based frontend framework",
+      "related_ids": [
+        "typescript",
+        "react",
+        "vue"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "svelte",
+      "label": "Svelte",
+      "layer": "surface",
+      "description": "Compiler-based framework with no virtual DOM",
+      "related_ids": [
+        "vue",
+        "react",
+        "javascript"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "webassembly",
+      "label": "WebAssembly",
+      "layer": "surface",
+      "description": "Binary instruction format for near-native performance",
+      "related_ids": [
+        "javascript",
+        "browser-apis"
+      ],
+      "aliases": [
+        "Wasm"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "browser-apis",
+      "label": "Browser APIs",
+      "layer": "surface",
+      "description": "Native interfaces exposed by the web browser",
+      "related_ids": [
+        "javascript",
+        "html",
+        "web-animations"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "web-animations",
+      "label": "Web Animations",
+      "layer": "surface",
+      "description": "CSS and JS techniques animating web elements",
+      "related_ids": [
+        "css",
+        "browser-apis",
+        "svelte"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "layer": "surface",
+      "description": "Designing web content usable by everyone",
+      "related_ids": [
+        "html",
+        "css",
+        "aria"
+      ],
+      "aliases": [
+        "a11y"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "aria",
+      "label": "ARIA",
+      "layer": "surface",
+      "description": "Attributes enhancing accessibility for assistive technologies",
+      "related_ids": [
+        "accessibility",
+        "html",
+        "browser-apis"
+      ],
+      "aliases": [
+        "WAI-ARIA"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "dom",
+      "label": "DOM",
+      "layer": "surface",
+      "description": "Tree model representing HTML document structure",
+      "related_ids": [
+        "html",
+        "javascript",
+        "browser-apis"
+      ],
+      "aliases": [
+        "Document Object Model"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "web-components",
+      "label": "Web Components",
+      "layer": "surface",
+      "description": "Standard for reusable encapsulated HTML custom elements",
+      "related_ids": [
+        "html",
+        "javascript",
+        "dom"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "css-grid",
+      "label": "CSS Grid",
+      "layer": "surface",
+      "description": "Two-dimensional CSS layout system for pages",
+      "related_ids": [
+        "css",
+        "css-flexbox",
+        "accessibility"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "css-flexbox",
+      "label": "CSS Flexbox",
+      "layer": "surface",
+      "description": "One-dimensional CSS layout model for alignment",
+      "related_ids": [
+        "css",
+        "css-grid",
+        "web-animations"
+      ],
+      "aliases": [
+        "Flexbox"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "pwa",
+      "label": "Progressive Web Apps",
+      "layer": "surface",
+      "description": "Web apps with native-like offline capabilities",
+      "related_ids": [
+        "browser-apis",
+        "javascript",
+        "accessibility"
+      ],
+      "aliases": [
+        "PWA"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "nodejs",
+      "label": "Node.js",
+      "layer": "mid",
+      "description": "JavaScript runtime for server-side applications",
+      "related_ids": [
+        "express",
+        "websockets",
+        "restapi"
+      ],
+      "aliases": [
+        "node"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "fastapi",
+      "label": "FastAPI",
+      "layer": "mid",
+      "description": "Modern Python framework for building APIs fast",
+      "related_ids": [
+        "restapi",
+        "graphql",
+        "jwt",
+        "python"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "django",
+      "label": "Django",
+      "layer": "mid",
+      "description": "Full-stack Python web framework with batteries",
+      "related_ids": [
+        "restapi",
+        "oauth",
+        "jwt"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "express",
+      "label": "Express",
+      "layer": "mid",
+      "description": "Minimal Node.js web application framework",
+      "related_ids": [
+        "nodejs",
+        "restapi",
+        "jwt"
+      ],
+      "aliases": [
+        "expressjs"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "grpc",
+      "label": "gRPC",
+      "layer": "mid",
+      "description": "High-performance remote procedure call framework",
+      "related_ids": [
+        "restapi",
+        "protobuf",
+        "websockets"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "restapi",
+      "label": "REST",
+      "layer": "mid",
+      "description": "Architectural style for stateless web APIs",
+      "related_ids": [
+        "graphql",
+        "jwt",
+        "oauth"
+      ],
+      "aliases": [
+        "rest"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "graphql",
+      "label": "GraphQL",
+      "layer": "mid",
+      "description": "Query language for flexible API data fetching",
+      "related_ids": [
+        "restapi",
+        "nodejs",
+        "apollo"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "websockets",
+      "label": "WebSockets",
+      "layer": "mid",
+      "description": "Full-duplex real-time communication protocol",
+      "related_ids": [
+        "nodejs",
+        "grpc",
+        "redis"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "oauth",
+      "label": "OAuth",
+      "layer": "mid",
+      "description": "Open standard for secure delegated authorization",
+      "related_ids": [
+        "jwt",
+        "restapi",
+        "django"
+      ],
+      "aliases": [
+        "oauth2"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "jwt",
+      "label": "JWT",
+      "layer": "mid",
+      "description": "Compact token standard for secure claims transmission",
+      "related_ids": [
+        "oauth",
+        "express",
+        "fastapi"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "redis",
+      "label": "Redis",
+      "layer": "mid",
+      "description": "In-memory data store and message broker",
+      "related_ids": [
+        "rabbitmq",
+        "kafka",
+        "websockets"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "rabbitmq",
+      "label": "RabbitMQ",
+      "layer": "mid",
+      "description": "Message broker using AMQP protocol",
+      "related_ids": [
+        "redis",
+        "kafka",
+        "express"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "kafka",
+      "label": "Apache Kafka",
+      "layer": "mid",
+      "description": "Distributed event streaming platform for high throughput",
+      "related_ids": [
+        "rabbitmq",
+        "redis",
+        "grpc"
+      ],
+      "aliases": [
+        "kafka"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "protobuf",
+      "label": "Protocol Buffers",
+      "layer": "mid",
+      "description": "Binary serialization format used by gRPC",
+      "related_ids": [
+        "grpc",
+        "kafka",
+        "restapi"
+      ],
+      "aliases": [
+        "protobuf"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "apollo",
+      "label": "Apollo Server",
+      "layer": "mid",
+      "description": "GraphQL server implementation for Node.js",
+      "related_ids": [
+        "graphql",
+        "nodejs",
+        "restapi"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "celery",
+      "label": "Celery",
+      "layer": "mid",
+      "description": "Distributed task queue for Python applications",
+      "related_ids": [
+        "redis",
+        "rabbitmq",
+        "django"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "nginx",
+      "label": "NGINX",
+      "layer": "mid",
+      "description": "High-performance web server and reverse proxy",
+      "related_ids": [
+        "nodejs",
+        "express",
+        "restapi"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "layer": "mid",
+      "description": "Containerization platform for packaging applications",
+      "related_ids": [
+        "nginx",
+        "kafka",
+        "django"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "postgresql",
+      "label": "PostgreSQL",
+      "layer": "deep_mid",
+      "description": "Advanced open-source relational database system",
+      "related_ids": [
+        "mysql",
+        "mongodb",
+        "redis"
+      ],
+      "aliases": [
+        "postgres"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "mysql",
+      "label": "MySQL",
+      "layer": "deep_mid",
+      "description": "Popular open-source relational database management",
+      "related_ids": [
+        "postgresql",
+        "mongodb",
+        "data-structures"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "mongodb",
+      "label": "MongoDB",
+      "layer": "deep_mid",
+      "description": "Document-oriented NoSQL database platform",
+      "related_ids": [
+        "postgresql",
+        "mysql",
+        "redis"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "redis",
+      "label": "Redis",
+      "layer": "deep_mid",
+      "description": "In-memory key-value data structure store",
+      "related_ids": [
+        "mongodb",
+        "postgresql",
+        "data-structures"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "tcp-ip",
+      "label": "TCP/IP",
+      "layer": "deep_mid",
+      "description": "Foundational internet communication protocol suite",
+      "related_ids": [
+        "dns",
+        "http",
+        "linux"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "dns",
+      "label": "DNS",
+      "layer": "deep_mid",
+      "description": "Translates domain names to IP addresses",
+      "related_ids": [
+        "tcp-ip",
+        "http",
+        "security-fundamentals"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "http",
+      "label": "HTTP",
+      "layer": "deep_mid",
+      "description": "Protocol for web data transfer communication",
+      "related_ids": [
+        "tcp-ip",
+        "dns",
+        "cryptography"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "linux",
+      "label": "Linux",
+      "layer": "deep_mid",
+      "description": "Open-source Unix-like operating system kernel",
+      "related_ids": [
+        "computer-architecture",
+        "security-fundamentals",
+        "tcp-ip"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "data-structures",
+      "label": "Data Structures",
+      "layer": "deep_mid",
+      "description": "Organizing and storing data efficiently in memory",
+      "related_ids": [
+        "algorithms",
+        "computer-architecture",
+        "redis"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "algorithms",
+      "label": "Algorithms",
+      "layer": "deep_mid",
+      "description": "Step-by-step procedures for solving computational problems",
+      "related_ids": [
+        "data-structures",
+        "computer-architecture",
+        "cryptography"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "computer-architecture",
+      "label": "Computer Architecture",
+      "layer": "deep_mid",
+      "description": "Design and organization of computer hardware systems",
+      "related_ids": [
+        "linux",
+        "algorithms",
+        "data-structures"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "security-fundamentals",
+      "label": "Security Fundamentals",
+      "layer": "deep_mid",
+      "description": "Core principles of protecting computer systems",
+      "related_ids": [
+        "cryptography",
+        "linux",
+        "dns"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "cryptography",
+      "label": "Cryptography",
+      "layer": "deep_mid",
+      "description": "Securing information through mathematical encoding techniques",
+      "related_ids": [
+        "security-fundamentals",
+        "http",
+        "algorithms"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "nosql",
+      "label": "NoSQL",
+      "layer": "deep_mid",
+      "description": "Non-relational database storage and retrieval systems",
+      "related_ids": [
+        "mongodb",
+        "redis",
+        "postgresql"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "indexing",
+      "label": "Database Indexing",
+      "layer": "deep_mid",
+      "description": "Speeding up database queries with index structures",
+      "related_ids": [
+        "postgresql",
+        "mysql",
+        "data-structures"
+      ],
+      "aliases": [
+        "indexes"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "networking-fundamentals",
+      "label": "Networking Fundamentals",
+      "layer": "deep_mid",
+      "description": "Core concepts of computer network communication",
+      "related_ids": [
+        "tcp-ip",
+        "dns",
+        "http"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "os-fundamentals",
+      "label": "OS Fundamentals",
+      "layer": "deep_mid",
+      "description": "Core operating system concepts and processes",
+      "related_ids": [
+        "linux",
+        "computer-architecture",
+        "security-fundamentals"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "hashing",
+      "label": "Hashing",
+      "layer": "deep_mid",
+      "description": "Mapping data to fixed-size values efficiently",
+      "related_ids": [
+        "cryptography",
+        "data-structures",
+        "redis"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "layer": "deep",
+      "description": "Containerize applications for consistent environments",
+      "related_ids": [
+        "kubernetes",
+        "nginx",
+        "cicd"
+      ],
+      "aliases": [
+        "containers"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "kubernetes",
+      "label": "Kubernetes",
+      "layer": "deep",
+      "description": "Orchestrate containers at scale",
+      "related_ids": [
+        "docker",
+        "terraform",
+        "observability"
+      ],
+      "aliases": [
+        "k8s"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "terraform",
+      "label": "Terraform",
+      "layer": "deep",
+      "description": "Infrastructure as code provisioning tool",
+      "related_ids": [
+        "aws",
+        "gcp",
+        "kubernetes"
+      ],
+      "aliases": [
+        "IaC"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "aws",
+      "label": "AWS",
+      "layer": "deep",
+      "description": "Amazon cloud computing platform",
+      "related_ids": [
+        "terraform",
+        "gcp",
+        "cicd"
+      ],
+      "aliases": [
+        "Amazon Web Services"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "gcp",
+      "label": "GCP",
+      "layer": "deep",
+      "description": "Google cloud computing platform",
+      "related_ids": [
+        "aws",
+        "terraform",
+        "kubernetes"
+      ],
+      "aliases": [
+        "Google Cloud"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "cicd",
+      "label": "CI/CD",
+      "layer": "deep",
+      "description": "Automate build test and deploy pipelines",
+      "related_ids": [
+        "git",
+        "docker",
+        "aws"
+      ],
+      "aliases": [
+        "continuous integration"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "git",
+      "label": "Git",
+      "layer": "deep",
+      "description": "Distributed version control system",
+      "related_ids": [
+        "cicd"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "nginx",
+      "label": "Nginx",
+      "layer": "deep",
+      "description": "High-performance web server and reverse proxy",
+      "related_ids": [
+        "docker",
+        "kubernetes",
+        "distributed-systems"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "pytorch",
+      "label": "PyTorch",
+      "layer": "deep",
+      "description": "Deep learning framework by Meta",
+      "related_ids": [
+        "tensorflow",
+        "llms",
+        "distributed-systems"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "tensorflow",
+      "label": "TensorFlow",
+      "layer": "deep",
+      "description": "Google open-source machine learning framework",
+      "related_ids": [
+        "pytorch",
+        "llms",
+        "gcp"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "llms",
+      "label": "LLMs",
+      "layer": "deep",
+      "description": "Large language models for generative AI",
+      "related_ids": [
+        "pytorch",
+        "tensorflow",
+        "distributed-systems"
+      ],
+      "aliases": [
+        "large language models"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "rust",
+      "label": "Rust",
+      "layer": "deep",
+      "description": "Systems language focused on memory safety",
+      "related_ids": [
+        "cpp",
+        "go",
+        "compilers"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "go",
+      "label": "Go",
+      "layer": "deep",
+      "description": "Concurrent systems language by Google",
+      "related_ids": [
+        "rust",
+        "distributed-systems",
+        "kubernetes"
+      ],
+      "aliases": [
+        "Golang"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "cpp",
+      "label": "C++",
+      "layer": "deep",
+      "description": "High-performance systems and application language",
+      "related_ids": [
+        "rust",
+        "compilers",
+        "pytorch"
+      ],
+      "aliases": [
+        "C plus plus"
+      ],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "compilers",
+      "label": "Compilers",
+      "layer": "deep",
+      "description": "Translate source code to machine code",
+      "related_ids": [
+        "rust",
+        "cpp",
+        "llvm"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "distributed-systems",
+      "label": "Distributed Systems",
+      "layer": "deep",
+      "description": "Design systems across multiple networked nodes",
+      "related_ids": [
+        "kubernetes",
+        "observability",
+        "go"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "observability",
+      "label": "Observability",
+      "layer": "deep",
+      "description": "Monitor logs metrics and traces in production",
+      "related_ids": [
+        "kubernetes",
+        "distributed-systems",
+        "cicd"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "llvm",
+      "label": "LLVM",
+      "layer": "deep",
+      "description": "Modular compiler infrastructure and toolchain",
+      "related_ids": [
+        "compilers",
+        "rust",
+        "cpp"
+      ],
+      "aliases": [],
+      "is_ai_proposed": false
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "layer": "mid",
+      "description": "General-purpose programming language",
+      "related_ids": [
+        "fastapi"
+      ],
+      "aliases": [],
+      "is_ai_proposed": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "html",
+      "target": "css",
+      "weight": 1.0
+    },
+    {
+      "source": "html",
+      "target": "dom",
+      "weight": 1.0
+    },
+    {
+      "source": "html",
+      "target": "accessibility",
+      "weight": 0.9
+    },
+    {
+      "source": "css",
+      "target": "web-animations",
+      "weight": 0.9
+    },
+    {
+      "source": "css",
+      "target": "css-grid",
+      "weight": 1.0
+    },
+    {
+      "source": "css",
+      "target": "css-flexbox",
+      "weight": 1.0
+    },
+    {
+      "source": "javascript",
+      "target": "typescript",
+      "weight": 1.0
+    },
+    {
+      "source": "javascript",
+      "target": "dom",
+      "weight": 1.0
+    },
+    {
+      "source": "javascript",
+      "target": "browser-apis",
+      "weight": 0.9
+    },
+    {
+      "source": "typescript",
+      "target": "react",
+      "weight": 0.9
+    },
+    {
+      "source": "typescript",
+      "target": "angular",
+      "weight": 1.0
+    },
+    {
+      "source": "react",
+      "target": "vue",
+      "weight": 0.7
+    },
+    {
+      "source": "react",
+      "target": "svelte",
+      "weight": 0.7
+    },
+    {
+      "source": "vue",
+      "target": "svelte",
+      "weight": 0.7
+    },
+    {
+      "source": "angular",
+      "target": "vue",
+      "weight": 0.6
+    },
+    {
+      "source": "webassembly",
+      "target": "javascript",
+      "weight": 0.8
+    },
+    {
+      "source": "webassembly",
+      "target": "browser-apis",
+      "weight": 0.8
+    },
+    {
+      "source": "browser-apis",
+      "target": "pwa",
+      "weight": 0.9
+    },
+    {
+      "source": "browser-apis",
+      "target": "web-animations",
+      "weight": 0.8
+    },
+    {
+      "source": "accessibility",
+      "target": "aria",
+      "weight": 1.0
+    },
+    {
+      "source": "aria",
+      "target": "dom",
+      "weight": 0.8
+    },
+    {
+      "source": "dom",
+      "target": "web-components",
+      "weight": 0.9
+    },
+    {
+      "source": "web-components",
+      "target": "javascript",
+      "weight": 0.8
+    },
+    {
+      "source": "css-grid",
+      "target": "css-flexbox",
+      "weight": 0.9
+    },
+    {
+      "source": "pwa",
+      "target": "javascript",
+      "weight": 0.8
+    },
+    {
+      "source": "nodejs",
+      "target": "express",
+      "weight": 1.0
+    },
+    {
+      "source": "nodejs",
+      "target": "websockets",
+      "weight": 0.9
+    },
+    {
+      "source": "nodejs",
+      "target": "restapi",
+      "weight": 0.8
+    },
+    {
+      "source": "express",
+      "target": "restapi",
+      "weight": 0.9
+    },
+    {
+      "source": "express",
+      "target": "jwt",
+      "weight": 0.8
+    },
+    {
+      "source": "fastapi",
+      "target": "restapi",
+      "weight": 0.9
+    },
+    {
+      "source": "fastapi",
+      "target": "jwt",
+      "weight": 0.8
+    },
+    {
+      "source": "django",
+      "target": "restapi",
+      "weight": 0.8
+    },
+    {
+      "source": "django",
+      "target": "oauth",
+      "weight": 0.7
+    },
+    {
+      "source": "restapi",
+      "target": "graphql",
+      "weight": 0.8
+    },
+    {
+      "source": "restapi",
+      "target": "oauth",
+      "weight": 0.7
+    },
+    {
+      "source": "restapi",
+      "target": "jwt",
+      "weight": 0.8
+    },
+    {
+      "source": "graphql",
+      "target": "apollo",
+      "weight": 1.0
+    },
+    {
+      "source": "apollo",
+      "target": "nodejs",
+      "weight": 0.9
+    },
+    {
+      "source": "oauth",
+      "target": "jwt",
+      "weight": 0.9
+    },
+    {
+      "source": "grpc",
+      "target": "protobuf",
+      "weight": 1.0
+    },
+    {
+      "source": "grpc",
+      "target": "restapi",
+      "weight": 0.7
+    },
+    {
+      "source": "websockets",
+      "target": "redis",
+      "weight": 0.7
+    },
+    {
+      "source": "redis",
+      "target": "rabbitmq",
+      "weight": 0.8
+    },
+    {
+      "source": "redis",
+      "target": "kafka",
+      "weight": 0.8
+    },
+    {
+      "source": "rabbitmq",
+      "target": "kafka",
+      "weight": 0.8
+    },
+    {
+      "source": "rabbitmq",
+      "target": "celery",
+      "weight": 0.9
+    },
+    {
+      "source": "redis",
+      "target": "celery",
+      "weight": 0.9
+    },
+    {
+      "source": "celery",
+      "target": "django",
+      "weight": 0.8
+    },
+    {
+      "source": "nginx",
+      "target": "nodejs",
+      "weight": 0.7
+    },
+    {
+      "source": "postgresql",
+      "target": "mysql",
+      "weight": 1.0
+    },
+    {
+      "source": "postgresql",
+      "target": "mongodb",
+      "weight": 0.8
+    },
+    {
+      "source": "postgresql",
+      "target": "redis",
+      "weight": 0.7
+    },
+    {
+      "source": "postgresql",
+      "target": "indexing",
+      "weight": 1.0
+    },
+    {
+      "source": "mysql",
+      "target": "indexing",
+      "weight": 1.0
+    },
+    {
+      "source": "mysql",
+      "target": "mongodb",
+      "weight": 0.7
+    },
+    {
+      "source": "mongodb",
+      "target": "nosql",
+      "weight": 1.0
+    },
+    {
+      "source": "mongodb",
+      "target": "redis",
+      "weight": 0.8
+    },
+    {
+      "source": "redis",
+      "target": "nosql",
+      "weight": 0.9
+    },
+    {
+      "source": "redis",
+      "target": "hashing",
+      "weight": 0.9
+    },
+    {
+      "source": "tcp-ip",
+      "target": "dns",
+      "weight": 1.0
+    },
+    {
+      "source": "tcp-ip",
+      "target": "http",
+      "weight": 1.0
+    },
+    {
+      "source": "tcp-ip",
+      "target": "networking-fundamentals",
+      "weight": 1.0
+    },
+    {
+      "source": "dns",
+      "target": "http",
+      "weight": 0.8
+    },
+    {
+      "source": "dns",
+      "target": "security-fundamentals",
+      "weight": 0.7
+    },
+    {
+      "source": "http",
+      "target": "cryptography",
+      "weight": 0.9
+    },
+    {
+      "source": "linux",
+      "target": "os-fundamentals",
+      "weight": 1.0
+    },
+    {
+      "source": "linux",
+      "target": "security-fundamentals",
+      "weight": 0.8
+    },
+    {
+      "source": "linux",
+      "target": "computer-architecture",
+      "weight": 0.8
+    },
+    {
+      "source": "data-structures",
+      "target": "algorithms",
+      "weight": 1.0
+    },
+    {
+      "source": "data-structures",
+      "target": "indexing",
+      "weight": 0.9
+    },
+    {
+      "source": "algorithms",
+      "target": "cryptography",
+      "weight": 0.8
+    },
+    {
+      "source": "algorithms",
+      "target": "hashing",
+      "weight": 0.9
+    },
+    {
+      "source": "computer-architecture",
+      "target": "os-fundamentals",
+      "weight": 1.0
+    },
+    {
+      "source": "cryptography",
+      "target": "hashing",
+      "weight": 1.0
+    },
+    {
+      "source": "docker",
+      "target": "kubernetes",
+      "weight": 1.0
+    },
+    {
+      "source": "docker",
+      "target": "cicd",
+      "weight": 0.9
+    },
+    {
+      "source": "docker",
+      "target": "nginx",
+      "weight": 0.7
+    },
+    {
+      "source": "kubernetes",
+      "target": "terraform",
+      "weight": 0.8
+    },
+    {
+      "source": "kubernetes",
+      "target": "observability",
+      "weight": 0.9
+    },
+    {
+      "source": "kubernetes",
+      "target": "go",
+      "weight": 0.7
+    },
+    {
+      "source": "terraform",
+      "target": "aws",
+      "weight": 1.0
+    },
+    {
+      "source": "terraform",
+      "target": "gcp",
+      "weight": 1.0
+    },
+    {
+      "source": "aws",
+      "target": "cicd",
+      "weight": 0.8
+    },
+    {
+      "source": "gcp",
+      "target": "tensorflow",
+      "weight": 0.7
+    },
+    {
+      "source": "cicd",
+      "target": "git",
+      "weight": 1.0
+    },
+    {
+      "source": "cicd",
+      "target": "observability",
+      "weight": 0.7
+    },
+    {
+      "source": "pytorch",
+      "target": "tensorflow",
+      "weight": 0.9
+    },
+    {
+      "source": "pytorch",
+      "target": "llms",
+      "weight": 1.0
+    },
+    {
+      "source": "pytorch",
+      "target": "distributed-systems",
+      "weight": 0.7
+    },
+    {
+      "source": "tensorflow",
+      "target": "llms",
+      "weight": 0.9
+    },
+    {
+      "source": "llms",
+      "target": "distributed-systems",
+      "weight": 0.8
+    },
+    {
+      "source": "rust",
+      "target": "cpp",
+      "weight": 0.9
+    },
+    {
+      "source": "rust",
+      "target": "compilers",
+      "weight": 0.8
+    },
+    {
+      "source": "rust",
+      "target": "go",
+      "weight": 0.7
+    },
+    {
+      "source": "go",
+      "target": "distributed-systems",
+      "weight": 0.9
+    },
+    {
+      "source": "cpp",
+      "target": "compilers",
+      "weight": 0.9
+    },
+    {
+      "source": "compilers",
+      "target": "llvm",
+      "weight": 1.0
+    },
+    {
+      "source": "llvm",
+      "target": "rust",
+      "weight": 0.8
+    },
+    {
+      "source": "distributed-systems",
+      "target": "observability",
+      "weight": 0.9
+    },
+    {
+      "source": "python",
+      "target": "fastapi",
+      "weight": 1.0
+    }
+  ],
+  "generated_at": "2026-03-15T18:03:02.684596"
+}
