@@ -8,8 +8,18 @@ from models.graph_models import OceanGraph, OceanNode, OceanEdge
 from models.tree_models import LearningTree, TreeNode, Resource
 from models.scan_models import DetectedTech, NodeProposal
 
-client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 MODEL = "claude-sonnet-4-6"
+_client: anthropic.Anthropic | None = None
+
+
+def _get_client() -> anthropic.Anthropic:
+    global _client
+    if _client is None:
+        api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise RuntimeError("ANTHROPIC_API_KEY environment variable is not set")
+        _client = anthropic.Anthropic(api_key=api_key)
+    return _client
 
 
 def _extract_json(text: str) -> dict | list:
@@ -60,7 +70,7 @@ def generate_initial_graph() -> OceanGraph:
 
     for layer_id, layer_desc in layers:
         prompt = _layer_prompt(layer_id, layer_desc)
-        message = client.messages.create(
+        message = _get_client().messages.create(
             model=MODEL,
             max_tokens=4096,
             messages=[{"role": "user", "content": prompt}],
@@ -112,7 +122,7 @@ Respond with ONLY valid compact JSON:
 
 
 def generate_learning_tree(node_id: str, node_label: str) -> LearningTree:
-    message = client.messages.create(
+    message = _get_client().messages.create(
         model=MODEL,
         max_tokens=8192,
         messages=[{"role": "user", "content": _learning_tree_prompt(node_id, node_label)}],
@@ -155,7 +165,7 @@ Respond with ONLY valid JSON:
 
 
 def detect_tech_stack(repo_url: str, files: dict[str, str], known_node_ids: list[str]) -> list[DetectedTech]:
-    message = client.messages.create(
+    message = _get_client().messages.create(
         model=MODEL,
         max_tokens=2048,
         messages=[{"role": "user", "content": _scan_prompt(repo_url, files, known_node_ids)}],
@@ -184,7 +194,7 @@ Respond ONLY with compact JSON:
 def propose_new_nodes(unmatched_names: list[str], existing_node_ids: list[str]) -> list[NodeProposal]:
     if not unmatched_names:
         return []
-    message = client.messages.create(
+    message = _get_client().messages.create(
         model=MODEL,
         max_tokens=4096,
         messages=[{"role": "user", "content": _proposal_prompt(unmatched_names, existing_node_ids)}],
