@@ -6,7 +6,8 @@ from services import claude_service, graph_store
 
 router = APIRouter(prefix="/api")
 
-TREE_CACHE_PATH = os.getenv("TREE_CACHE_PATH", "data/learning_trees_cache.json")
+_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TREE_CACHE_PATH = os.getenv("TREE_CACHE_PATH") or os.path.join(_BASE_DIR, "data", "learning_trees_cache.json")
 
 
 def _read_cache() -> dict:

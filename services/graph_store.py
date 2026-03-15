@@ -4,7 +4,12 @@ from datetime import datetime
 from filelock import FileLock
 from models.graph_models import OceanGraph
 
-GRAPH_PATH = os.getenv("GRAPH_STORE_PATH", "data/graph_data.json")
+# Resolve path relative to the repo root (one level up from services/)
+_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_DEFAULT_GRAPH_PATH = os.path.join(_BASE_DIR, "data", "graph_data.json")
+_DEFAULT_TREE_PATH = os.path.join(_BASE_DIR, "data", "learning_trees_cache.json")
+
+GRAPH_PATH = os.getenv("GRAPH_STORE_PATH") or _DEFAULT_GRAPH_PATH
 LOCK_PATH = GRAPH_PATH + ".lock"
 
 # In-memory cache: (version, graph)
