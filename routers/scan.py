@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from models.scan_models import ScanRequest, ScanResult
+from models.deep_scan_models import DeepScanRequest, ProjectLearningPlan
 from services import claude_service, github_service, node_matcher, graph_store
 
 router = APIRouter(prefix="/api")
@@ -41,3 +42,19 @@ async def scan_github(body: ScanRequest):
         proposals=proposals,
         files_analyzed=list(files.keys()),
     )
+
+
+@router.post("/scan/github/deep", response_model=ProjectLearningPlan)
+async def deep_scan_github(body: DeepScanRequest):
+    """Deep repo analysis: read code + architecture, generate comprehensive learning plan."""
+    try:
+        files = await github_service.fetch_repo_files_deep(body.github_url)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    if not files:
+        raise HTTPException(status_code=422, detail="No files found in repository")
+
+    repo_name = github_service.repo_name_from_url(body.github_url)
+    plan = claude_service.generate_project_plan(body.github_url, repo_name, files)
+    return plan

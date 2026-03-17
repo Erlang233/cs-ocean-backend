@@ -7,6 +7,7 @@ import anthropic
 from models.graph_models import OceanGraph, OceanNode, OceanEdge
 from models.tree_models import LearningTree, TreeNode, Resource
 from models.scan_models import DetectedTech, NodeProposal
+from models.deep_scan_models import ProjectLearningPlan, PlanNode
 
 MODEL = "claude-sonnet-4-6"
 _client: anthropic.Anthropic | None = None
@@ -189,6 +190,57 @@ For each, output: id (slug), label, layer (surface|mid|deep_mid|deep), descripti
 
 Respond ONLY with compact JSON:
 {{"proposals":[{{"id":"x","label":"X","layer":"mid","description":"x","suggested_parent_id":"y","scope":"niche"}}]}}"""
+
+
+# ---------------------------------------------------------------------------
+# (e) Deep Repo Analysis — full project learning plan
+# ---------------------------------------------------------------------------
+
+def _project_plan_prompt(repo_url: str, repo_name: str, files: dict[str, str]) -> str:
+    file_sections = "\n\n".join(
+        f"<{name}>\n{content[:4000]}\n</{name}>"
+        for name, content in list(files.items())[:10]
+    )
+    return f"""Analyze this GitHub repository and generate a comprehensive learning plan to understand and contribute to it.
+
+Repository: {repo_name} ({repo_url})
+
+Files:
+{file_sections}
+
+Generate a learning tree with:
+- 1 root node (level 0): the overall project mastery goal
+- 3-5 major areas (level 1): main technology/skill domains in this project
+- 2-3 subtopics per area (level 2): specific skills to learn
+- 1-2 concrete tasks per subtopic (level 3): actionable learning steps
+
+Total 15-25 nodes. Each node:
+- id: unique slug
+- label: max 5 words
+- description: max 10 words
+- level: 0-3
+- parent_id: null only for root
+- tech_ref: optional OceanGraph node id (e.g. "react","python","docker") or null
+- resources: 0-2 items with title, url (real URL), type (video|article|docs|course|book), is_free
+
+Also include summary (2-3 sentences describing the project and what you will learn).
+
+Respond ONLY with compact JSON:
+{{"repo_name":"{repo_name}","summary":"...","root_node_id":"root","nodes":[...],"generated_at":"2026-01-01T00:00:00"}}"""
+
+
+def generate_project_plan(repo_url: str, repo_name: str, files: dict[str, str]) -> ProjectLearningPlan:
+    message = _get_client().messages.create(
+        model=MODEL,
+        max_tokens=8192,
+        messages=[{"role": "user", "content": _project_plan_prompt(repo_url, repo_name, files)}],
+    )
+    raw = message.content[0].text
+    data = _extract_json(raw)
+    if "generated_at" not in data or not data["generated_at"]:
+        data["generated_at"] = datetime.utcnow().isoformat()
+    data["repo_url"] = repo_url
+    return ProjectLearningPlan.model_validate(data)
 
 
 def propose_new_nodes(unmatched_names: list[str], existing_node_ids: list[str]) -> list[NodeProposal]:
